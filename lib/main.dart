@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
+import 'app.dart'; // Import the new App widget
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Beanstalk')),
-        body: const Center(child: Text('Hello Beanstalk!')),
-      ),
-    );
-  }
+  runApp(const App());
 }

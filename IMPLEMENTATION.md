@@ -8,6 +8,7 @@ This section will be updated chronologically after each phase to log actions tak
 
 *   **Phase 1 (Setup):** *Completed.* All initial project setup tasks are done. All required dependencies were already present in `pubspec.yaml`, and the directory structure was created as per `DESIGN.md`. A minimal `lib/main.dart` was created to make the project runnable. The initial commit has been made. A persistent issue with the `launch_app` tool prevented the app from being launched through the tool, but a manual `flutter run -d windows` command was successful.
 *   **Phase 2 (Core Models & Data Layer):** *Completed.* All data models (`User`, `Post`, `Cafe`, `Comment`, `Tag`, `PostTag`) were created with `json_serializable` annotations. `build_runner` was executed to generate part files. Abstract repository interfaces and mock data sources were implemented. Concrete repository implementations were created using the mock data sources. Unit tests for data models were created and passed. `dart_fix` and `dart_format` were run.
+*   **Phase 3 (Authentication):** *Completed.* Implemented the full authentication flow, including `AuthRepository`, `AuthUseCase`, `AuthViewModel`, and the `LoginView` and `RegisterView` screens. Integrated the `AuthViewModel` with `go_router` for automatic redirection and state-based navigation. Created unit tests for the authentication layer.
 
 ---
 
@@ -57,20 +58,30 @@ After completing a task, if you added any TODOs to the code or didn't fully impl
     *   [x] Run `analyze_files` and fix any issues.
     *   [x] Run all tests to ensure they pass.
     *   [x] Run `dart_format .`.
+    *   [x] Update the Journal in this document.
+    *   [x] Use `git diff` to review changes and create a commit message.
+    *   [x] Get user approval for the commit message.
+    *   [x] Commit the changes.
+    *   [ ] If the app is running, `hot_reload` to see changes.
+
+### Phase 3: Authentication
+
+*   [x] Implement the `AuthViewModel` in `lib/src/presentation/auth/viewmodel/`.
+*   [x] Create the login and registration screens (`login_view.dart`, `register_view.dart`) in `lib/src/presentation/auth/view/`.
+*   [x] Connect the UI to the `AuthViewModel` to handle user input and state changes (loading, error, success).
+*   [x] Implement the `AuthUseCase` in the domain layer and connect it to the (mock) `AuthRepository`.
+*   [x] Update the `go_router` configuration to handle authentication logic (e.g., redirecting unauthenticated users to the login screen).
+*   [x] **Post-Phase Checklist:** (Same as Phase 2)
+    *   [x] Create unit tests for authentication.
+    *   [x] Run `dart_fix --apply`.
+    *   [x] Run `analyze_files` and fix any issues.
+    *   [x] Run all tests to ensure they pass.
+    *   [x] Run `dart_format .`.
     *   [ ] Update the Journal in this document.
     *   [ ] Use `git diff` to review changes and create a commit message.
     *   [ ] Get user approval for the commit message.
     *   [ ] Commit the changes.
     *   [ ] If the app is running, `hot_reload` to see changes.
-
-### Phase 3: Authentication
-
-*   [ ] Implement the `AuthViewModel` in `lib/src/presentation/auth/viewmodel/`.
-*   [ ] Create the login and registration screens (`login_view.dart`, `register_view.dart`) in `lib/src/presentation/auth/view/`.
-*   [ ] Connect the UI to the `AuthViewModel` to handle user input and state changes (loading, error, success).
-*   [ ] Implement the `AuthUseCase` in the domain layer and connect it to the (mock) `AuthRepository`.
-*   [ ] Update the `go_router` configuration to handle authentication logic (e.g., redirecting unauthenticated users to the login screen).
-*   [ ] **Post-Phase Checklist:** (Same as Phase 2)
 
 ### Phase 4: Feed & Post Creation
 
