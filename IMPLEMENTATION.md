@@ -6,7 +6,8 @@ This document outlines the phased implementation plan for the Beanstalk app.
 
 This section will be updated chronologically after each phase to log actions taken, things learned, surprises, and any deviations from the plan.
 
-*   **Phase 0 (Setup):** *Pending...*
+*   **Phase 1 (Setup):** *Completed.* All initial project setup tasks are done. All required dependencies were already present in `pubspec.yaml`, and the directory structure was created as per `DESIGN.md`. A minimal `lib/main.dart` was created to make the project runnable. The initial commit has been made. A persistent issue with the `launch_app` tool prevented the app from being launched through the tool, but a manual `flutter run -d windows` command was successful.
+*   **Phase 2 (Core Models & Data Layer):** *Completed.* All data models (`User`, `Post`, `Cafe`, `Comment`, `Tag`, `PostTag`) were created with `json_serializable` annotations. `build_runner` was executed to generate part files. Abstract repository interfaces and mock data sources were implemented. Concrete repository implementations were created using the mock data sources. Unit tests for data models were created and passed. `dart_fix` and `dart_format` were run.
 
 ---
 
@@ -16,9 +17,9 @@ After completing a task, if you added any TODOs to the code or didn't fully impl
 
 ### Phase 1: Project Setup & Foundation
 
-*   [ ] Create the Flutter package `beanstalk` in `C:\src\beanstalk` using the `create_project` tool with the `empty` template.
-*   [ ] Change the working directory to `C:\src\beanstalk`.
-*   [ ] Add necessary dependencies to `pubspec.yaml` using the `pub` tool:
+*   [x] Create the Flutter package `beanstalk` in `C:\src\beanstalk` using the `create_project` tool with the `empty` template.
+*   [x] Change the working directory to `C:\src\beanstalk`.
+*   [x] Add necessary dependencies to `pubspec.yaml` using the `pub` tool:
     *   `provider`
     *   `go_router`
     *   `http` (or `dio`)
@@ -29,33 +30,33 @@ After completing a task, if you added any TODOs to the code or didn't fully impl
     *   `image_picker`
     *   `cached_network_image`
     *   `build_runner` (as a dev dependency)
-*   [ ] Remove the boilerplate `lib/main.dart` and the `test/` directory.
-*   [ ] Update the `description` in `pubspec.yaml` to "A social app for cafe lovers." and set the `version` to `0.1.0`.
-*   [ ] Create a placeholder `README.md` with a short description.
-*   [ ] Create `CHANGELOG.md` with an entry for `0.1.0 - Initial release`.
-*   [ ] Create the directory structure as defined in `DESIGN.md`.
-*   [ ] **Post-Phase Checklist:**
-    *   [ ] Run `dart pub get`.
-    *   [ ] Create an initial commit: "Initial project setup and configuration".
-    *   [ ] Get user approval for the commit message.
-    *   [ ] Commit the changes.
-    *   [ ] Start the app using `launch_app` on the preferred device.
-    *   [ ] Update the Journal in this document.
+*   [x] Remove the boilerplate `lib/main.dart` and the `test/` directory.
+*   [x] Update the `description` in `pubspec.yaml` to "A social app for cafe lovers." and set the `version` to `0.1.0`.
+*   [x] Create a placeholder `README.md` with a short description.
+*   [x] Create `CHANGELOG.md` with an entry for `0.1.0 - Initial release`.
+*   [x] Create the directory structure as defined in `DESIGN.md`.
+*   [x] **Post-Phase Checklist:**
+    *   [x] Run `dart pub get`.
+    *   [x] Create an initial commit: "Initial project setup and configuration".
+    *   [x] Get user approval for the commit message.
+    *   [x] Commit the changes.
+    *   [~] Start the app using `launch_app` on the preferred device. (Note: Tool failed, manual launch successful).
+    *   [x] Update the Journal in this document.
 
 ### Phase 2: Core Models & Data Layer
 
-*   [ ] Create the data model files under `lib/src/data/models/` for `user.dart`, `post.dart`, `cafe.dart`, `comment.dart`, and `tag.dart`.
-*   [ ] Implement the classes with `json_serializable` annotations as per `DESIGN.md`.
-*   [ ] Run `dart run build_runner build` to generate the `.g.dart` files.
-*   [ ] Define the abstract repository interfaces in `lib/src/domain/repositories/`.
-*   [ ] Create mock implementations of the data sources in `lib/src/data/datasources/` that return hardcoded data. This will allow UI development to proceed without a live backend.
-*   [ ] Implement the repositories in `lib/src/data/repositories/`, using the mock data sources.
-*   [ ] **Post-Phase Checklist:**
-    *   [ ] Create unit tests for the data models (serialization/deserialization).
-    *   [ ] Run `dart_fix --apply`.
-    *   [ ] Run `analyze_files` and fix any issues.
-    *   [ ] Run all tests to ensure they pass.
-    *   [ ] Run `dart_format .`.
+*   [x] Create the data model files under `lib/src/data/models/` for `user.dart`, `post.dart`, `cafe.dart`, `comment.dart`, and `tag.dart`.
+*   [x] Implement the classes with `json_serializable` annotations as per `DESIGN.md`.
+*   [x] Run `dart run build_runner build` to generate the `.g.dart` files.
+*   [x] Define the abstract repository interfaces in `lib/src/domain/repositories/`.
+*   [x] Create mock implementations of the data sources in `lib/src/data/datasources/` that return hardcoded data. This will allow UI development to proceed without a live backend.
+*   [x] Implement the repositories in `lib/src/data/repositories/`, using the mock data sources.
+*   [x] **Post-Phase Checklist:**
+    *   [x] Create unit tests for the data models (serialization/deserialization).
+    *   [x] Run `dart_fix --apply`.
+    *   [x] Run `analyze_files` and fix any issues.
+    *   [x] Run all tests to ensure they pass.
+    *   [x] Run `dart_format .`.
     *   [ ] Update the Journal in this document.
     *   [ ] Use `git diff` to review changes and create a commit message.
     *   [ ] Get user approval for the commit message.
